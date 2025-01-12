@@ -1,7 +1,7 @@
 // client/src/services/commentService.js
 import axios from "axios";
 
-const API_URL = "http://0.0.0.0:5000/api/comments";
+const API_URL = "http://0.0.0.0:10000/api/comments";
 
 export const fetchCommentsByPost = async (postId) => {
 	const res = await axios.get(`${API_URL}/${postId}`);
