@@ -1,7 +1,7 @@
 // client/src/services/postService.js
 import axios from "axios";
 
-const API_URL = "http://0.0.0.0:5000/api/posts";
+const API_URL = "http://0.0.0.0:10000/api/posts";
 
 export const fetchApprovedPosts = async () => {
 	const res = await axios.get(API_URL);
