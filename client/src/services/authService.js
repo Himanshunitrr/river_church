@@ -1,7 +1,7 @@
 // client/src/services/authService.js
 import axios from "axios";
 
-const API_URL = "http://0.0.0.0:10000/api/auth";
+const API_URL = "/api/auth";
 
 export const signup = async (userData) => {
 	// userData includes { name, email, password, adminToken }
