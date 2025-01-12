@@ -1,0 +1,169 @@
+.admin-dashboard-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pending-item {
+  border: 1px solid black;
+  margin: 10px 0;/* General container for the admin dashboard */
+.admin-dashboard-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow for a modern look */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Individual items (e.g., posts/comments for approval) */
+.pending-item {
+  border: 1px solid #e0e0e0;
+  margin: 15px 0;
+  padding: 20px;
+  border-radius: 6px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Light shadow for better visibility */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover animation */
+}
+
+.pending-item:hover {
+  transform: translateY(-2px); /* Slightly lift the item on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+.pending-item h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.pending-item p {
+  margin: 5px 0;
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Buttons for approval/rejection actions */
+.pending-item button {
+  margin-right: 8px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4caf50; /* Green for positive actions */
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.pending-item button.reject {
+  background-color: #f44336; /* Red for rejection */
+}
+
+.pending-item button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.pending-item button.reject:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+.popup-message {
+  background-color: #d9f2ff; /* Soft blue background for info messages */
+  border: 1px solid #007acc;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 15px;
+  color: #005b99;
+  font-size: 0.95rem;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  .admin-dashboard-container {
+    padding: 15px;
+    max-width: 90%; /* Reduce max width for tablets */
+  }
+
+  .pending-item {
+    padding: 15px;
+    margin: 10px 0;
+  }
+
+  .pending-item h4 {
+    font-size: 1rem;
+  }
+
+  .pending-item p {
+    font-size: 0.9rem;
+  }
+
+  .pending-item button {
+    padding: 7px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard-container {
+    padding: 10px;
+    max-width: 100%; /* Full width on small screens */
+  }
+
+  .pending-item {
+    padding: 10px;
+  }
+
+  .pending-item h4 {
+    font-size: 0.95rem;
+  }
+
+  .pending-item p {
+    font-size: 0.85rem;
+  }
+
+  .pending-item button {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.pending-item h4 {
+  margin: 0 0 10px 0;
+}
+
+.pending-item p {
+  margin: 5px 0;
+}
+
+.pending-item button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pending-item button:hover {
+  background-color: #ddd;
+}
+
+.popup-message {
+  background-color: lightblue;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}

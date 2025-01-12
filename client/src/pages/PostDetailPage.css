@@ -1,0 +1,123 @@
+/* Post Detail Container */
+.post-detail-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Modern shadow */
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+/* Individual Comments */
+.comment {
+  border: 1px solid black;
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for differentiation */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment:hover {
+  transform: translateY(-2px); /* Lift on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.comment p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Add Comment Form */
+form {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 6px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+  resize: vertical; /* Allows vertical resizing but prevents horizontal overflow */
+  font-size: 0.95rem;
+}
+
+form button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50; /* Consistent green theme */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+form button:hover {
+  background-color: #45a049; /* Darker green on hover */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle hover effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .post-detail-container {
+    padding: 15px;
+    max-width: 90%; /* Adjust container width on tablets */
+  }
+
+  .comment {
+    padding: 12px;
+    margin: 10px 0;
+  }
+
+  .comment p {
+    font-size: 0.9rem; /* Slightly smaller font for smaller screens */
+  }
+
+  form {
+    padding: 12px;
+  }
+
+  form textarea {
+    font-size: 0.9rem;
+  }
+
+  form button {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-detail-container {
+    padding: 10px;
+    max-width: 100%; /* Full width on smaller devices */
+  }
+
+  .comment {
+    padding: 10px;
+  }
+
+  form {
+    padding: 10px;
+  }
+
+  form textarea {
+    font-size: 0.85rem;
+  }
+
+  form button {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+  }
+}
