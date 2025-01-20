@@ -89,7 +89,7 @@ const PostDetailPage = () => {
 	useEffect(() => {
 		loadPost();
 		loadComments();
-	}, [loadPost, loadComments]);
+	}, [postId]);
 
 	if (!post) {
 		return <div>Loading post details...</div>;
