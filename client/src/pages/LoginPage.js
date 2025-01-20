@@ -1,7 +1,7 @@
-// client/src/pages/LoginPage.js
 import React, { useState } from "react";
 import { login } from "../services/authService";
 import "./Form.css";
+
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -12,6 +12,7 @@ const LoginPage = () => {
 		try {
 			const response = await login({ email, password });
 			localStorage.setItem("token", response.token);
+			localStorage.setItem("role", response.user.role); // Store the user's role
 			// Could also store user info or navigate to another page
 			window.location.href = "/";
 		} catch (error) {

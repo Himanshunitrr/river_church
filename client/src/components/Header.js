@@ -1,11 +1,12 @@
-// client/src/components/Header.js
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+
 const Header = () => {
 	const token = localStorage.getItem("token");
 	const handleLogout = () => {
 		localStorage.removeItem("token");
+		localStorage.removeItem("role"); // Clear the user's role
 		window.location.href = "/";
 	};
 
