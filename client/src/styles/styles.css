@@ -1,0 +1,150 @@
+/* client/src/styles/styles.css */
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: #d32f2f;
+}
+
+/* HomePage Styles */
+.home-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post {
+  border: 1px solid black;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.post h3 {
+  margin: 0;
+}
+
+.post p {
+  margin: 5px 0;
+}
+
+/* PostDetailPage Styles */
+.post-detail-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment {
+  border: 1px solid black;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.comment p {
+  margin: 5px 0;
+}
+
+/* AdminDashboardPage Styles */
+.admin-dashboard-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pending-item {
+  border: 1px solid black;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.pending-item h4 {
+  margin: 0;
+}
+
+.pending-item p {
+  margin: 5px 0;
+}
+
+.pending-item button {
+  margin-right: 5px;
+}
+
+/* Form Styles */
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+  margin-bottom: 10px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
