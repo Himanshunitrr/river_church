@@ -1,14 +1,11 @@
-// client/src/pages/AdminDashboardPage.js
 import React, { useState, useEffect } from "react";
 import {
 	fetchPendingPosts,
 	approveOrRejectPost,
-	deletePost,
 } from "../services/postService";
 import {
 	fetchPendingComments,
 	approveOrRejectComment,
-	deleteComment,
 } from "../services/commentService";
 import "./AdminDashboardPage.css";
 
@@ -84,52 +81,6 @@ const AdminDashboardPage = () => {
 		}
 	};
 
-	// Handle post deletion
-	const handlePostDeletion = async (postId) => {
-		try {
-			// Call the service function
-			const response = await deletePost(postId, token);
-
-			// Remove the post from state so it's no longer displayed
-			setPendingPosts((prevPosts) => prevPosts.filter((p) => p._id !== postId));
-
-			// Show a popup message
-			setPopUpMessage("Post has been deleted.");
-
-			// Clear the popup after 3 seconds
-			setTimeout(() => {
-				setPopUpMessage("");
-			}, 3000);
-		} catch (error) {
-			console.error(error);
-			setPopUpMessage("Failed to delete post.");
-		}
-	};
-
-	// Handle comment deletion
-	const handleCommentDeletion = async (commentId) => {
-		try {
-			// Call the service function
-			const response = await deleteComment(commentId, token);
-
-			// Remove the comment from state so it's no longer displayed
-			setPendingComments((prevComments) =>
-				prevComments.filter((c) => c._id !== commentId)
-			);
-
-			// Show a popup message
-			setPopUpMessage("Comment has been deleted.");
-
-			// Clear the popup after 3 seconds
-			setTimeout(() => {
-				setPopUpMessage("");
-			}, 3000);
-		} catch (error) {
-			console.error(error);
-			setPopUpMessage("Failed to delete comment.");
-		}
-	};
-
 	return (
 		<div>
 			<h2>Admin Dashboard</h2>
@@ -175,12 +126,6 @@ const AdminDashboardPage = () => {
 						<button onClick={() => handlePostApproval(post._id, "rejected")}>
 							Reject
 						</button>
-						<button
-							style={{ position: "absolute", top: "10px", right: "10px" }}
-							onClick={() => handlePostDeletion(post._id)}
-						>
-							Delete
-						</button>
 					</div>
 				))}
 			</section>
@@ -216,12 +161,6 @@ const AdminDashboardPage = () => {
 							onClick={() => handleCommentApproval(comment._id, "rejected")}
 						>
 							Reject
-						</button>
-						<button
-							style={{ position: "absolute", top: "10px", right: "10px" }}
-							onClick={() => handleCommentDeletion(comment._id)}
-						>
-							Delete
 						</button>
 					</div>
 				))}

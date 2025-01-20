@@ -1,22 +1,24 @@
-// client/src/pages/PostDetailPage.js
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getPostById } from "../services/postService";
-import { fetchCommentsByPost, createComment } from "../services/commentService";
-import "./PostDetailPage.css"; 
-const PostDetailPage = () => {
-	// Get the :postId from the URL
-	const { postId } = useParams();
+import { getPostById, deletePost } from "../services/postService";
+import {
+	fetchCommentsByPost,
+	createComment,
+	deleteComment,
+} from "../services/commentService";
+import "./PostDetailPage.css";
 
+const PostDetailPage = () => {
+	const { postId } = useParams();
 	const [post, setPost] = useState(null);
 	const [comments, setComments] = useState([]);
 	const [commentContent, setCommentContent] = useState("");
 	const [errorMsg, setErrorMsg] = useState("");
+	const [popUpMessage, setPopUpMessage] = useState("");
 
-	// Token for authenticated requests (if needed)
 	const token = localStorage.getItem("token");
+	const userRole = localStorage.getItem("role");
 
-	// 1. Fetch the post details
 	const loadPost = async () => {
 		try {
 			const postData = await getPostById(postId);
@@ -27,7 +29,6 @@ const PostDetailPage = () => {
 		}
 	};
 
-	// 2. Fetch the approved comments for this post
 	const loadComments = async () => {
 		try {
 			const commentData = await fetchCommentsByPost(postId);
@@ -38,7 +39,6 @@ const PostDetailPage = () => {
 		}
 	};
 
-	// 3. Create a new comment (requires user token if your app enforces auth)
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
@@ -47,10 +47,8 @@ const PostDetailPage = () => {
 				return;
 			}
 
-			// Send comment to API
 			await createComment(postId, commentContent, token);
-			setCommentContent(""); // clear text field
-			// reload comments so user can see their pending comment or see a success message
+			setCommentContent("");
 			loadComments();
 		} catch (error) {
 			console.error(error);
@@ -58,11 +56,39 @@ const PostDetailPage = () => {
 		}
 	};
 
-	// 4. When component mounts, load post & comments
+	const handlePostDeletion = async () => {
+		try {
+			await deletePost(postId, token);
+			setPopUpMessage("Post has been deleted.");
+			setTimeout(() => {
+				setPopUpMessage("");
+				window.location.href = "/";
+			}, 3000);
+		} catch (error) {
+			console.error(error);
+			setPopUpMessage("Failed to delete post.");
+		}
+	};
+
+	const handleCommentDeletion = async (commentId) => {
+		try {
+			await deleteComment(commentId, token);
+			setComments((prevComments) =>
+				prevComments.filter((c) => c._id !== commentId)
+			);
+			setPopUpMessage("Comment has been deleted.");
+			setTimeout(() => {
+				setPopUpMessage("");
+			}, 3000);
+		} catch (error) {
+			console.error(error);
+			setPopUpMessage("Failed to delete comment.");
+		}
+	};
+
 	useEffect(() => {
 		loadPost();
 		loadComments();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [postId]);
 
 	if (!post) {
@@ -74,19 +100,48 @@ const PostDetailPage = () => {
 			<h2>{post.title}</h2>
 			<p>{post.content}</p>
 			<p>Author: {post.user?.name}</p>
+			{userRole === "admin" && (
+				<button onClick={handlePostDeletion}>Delete Post</button>
+			)}
 			<hr />
 
 			<h3>Comments</h3>
+			{popUpMessage && (
+				<div
+					style={{
+						backgroundColor: "lightblue",
+						border: "1px solid #000",
+						borderRadius: "4px",
+						padding: "10px",
+						marginBottom: "10px",
+					}}
+				>
+					{popUpMessage}
+				</div>
+			)}
 			{comments.length === 0 && <p>No approved comments yet.</p>}
 			{comments.map((comment) => (
 				<div
 					key={comment._id}
-					style={{ border: "1px solid #000", margin: "8px 0", padding: "8px" }}
+					style={{
+						border: "1px solid #000",
+						margin: "8px 0",
+						padding: "8px",
+						position: "relative",
+					}}
 				>
 					<p>
 						<strong>{comment.user?.name}</strong>:
 					</p>
 					<p>{comment.content}</p>
+					{userRole === "admin" && (
+						<button
+							style={{ position: "absolute", top: "10px", right: "10px" }}
+							onClick={() => handleCommentDeletion(comment._id)}
+						>
+							Delete
+						</button>
+					)}
 				</div>
 			))}
 
