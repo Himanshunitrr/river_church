@@ -25,6 +25,7 @@ const HomePage = () => {
 
 	const handlePostDeletion = async (postId) => {
 		try {
+			console.log("Deleting post", postId);
 			await deletePost(postId, token);
 			setPosts((prevPosts) => prevPosts.filter((p) => p._id !== postId));
 			setPopUpMessage("Post has been deleted.");
