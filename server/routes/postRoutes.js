@@ -13,19 +13,25 @@ router.get("/", postController.getAllApprovedPosts);
 // Get pending posts (admin only)
 router.get("/pending", authMiddleware("admin"), postController.getPendingPosts);
 router.put(
-	"/:postId",
-	authMiddleware("admin"),
-	postController.approveOrRejectPost
+    "/:postId",
+    authMiddleware("admin"),
+    postController.approveOrRejectPost
 );
 
 router.get('/:postId', postController.getPostById); // define this route
 
-
 // Approve or reject a post (admin only)
 router.put(
-	"/:postId",
-	authMiddleware("admin"),
-	postController.approveOrRejectPost
+    "/:postId",
+    authMiddleware("admin"),
+    postController.approveOrRejectPost
+);
+
+// Delete a post (admin only)
+router.delete(
+	"/:postId", 
+	authMiddleware("admin"), 
+	postController.deletePost
 );
 
 module.exports = router;

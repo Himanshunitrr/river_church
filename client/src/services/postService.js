@@ -39,8 +39,18 @@ export const getPostById = async (postId) => {
 };
 
 export const deletePost = async (postId, token) => {
-	const res = await axios.delete(`${API_URL}/${postId}`, {
-		headers: { Authorization: `Bearer ${token}` },
-	});
-	return res.data;
+	try {
+		const res = await axios.delete(`${API_URL}/${postId}`, {
+			headers: { Authorization: `Bearer ${token}` },
+		});
+		return res.data; // Return response data on success
+	} catch (error) {
+		// Log the error for debugging
+		console.error("Error deleting post:", error);
+
+		// Return a custom error message or throw it to be handled by the caller
+		throw error.response
+			? new Error(error.response.data.message || "Failed to delete post")
+			: new Error("Network error or server not reachable");
+	}
 };
